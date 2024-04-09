@@ -1,7 +1,7 @@
 # Manual Setup of this project
 
 
-# npm init 
+## npm init 
 # add scripts
 # remove main
 # install dep like react, react-dom
