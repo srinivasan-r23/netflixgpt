@@ -11,3 +11,19 @@ generate main files like index.html, .tsx (make sure to create .tsx file). .css 
 createRoot in the index.js and render the root html
 add script tag proividing the src of index.tsx, and provide type as module.
 npm start
+
+
+## Tailwind Setup 
+- follow the docs, install
+- init the tailwind
+- replace the config files
+- create postcssrc
+- paste the config
+- index.css paste the derivatives
+
+
+## React router
+- import createBrowser router
+- pass the array of element and path
+- provide the above created object to RouterProvider and render the same in the app
+

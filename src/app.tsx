@@ -1,8 +1,11 @@
 import React, { ReactElement } from 'react'
+import Body from './components/Body'
 
 const App: React.FC = (): ReactElement => {
   return (
-    <div className='text-xl text-red-500'>Hi</div>
+    <>
+      <Body />
+    </>
   )
 }
 
