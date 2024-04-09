@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 
 const App: React.FC = (): ReactElement => {
   return (
-    <div>Hi</div>
+    <div className='text-xl text-red-500'>Hi</div>
   )
 }
 
