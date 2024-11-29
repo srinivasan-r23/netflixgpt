@@ -1,16 +1,23 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
 import { checkValidData } from "../utils/validate";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const [isSigninForm, setIsSignInForm] = useState(true);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const fullNameRef = useRef(null);
-
+  const dispatch = useDispatch();
   const [errorMsg, setErrorMsg] = useState(null);
+  const navigate = useNavigate();
 
   const toggleSignInForm = () => {
     setIsSignInForm(!isSigninForm);
@@ -33,7 +40,15 @@ const Login = () => {
           const user = userCredential.user;
           // ...
 
-          if (user?.accessToken) window.location.href = "/browse";
+          if (user?.accessToken) {
+            navigate("/browse");
+          }
+        })
+        .then(() => {
+          const { uid, email, displayName } = auth.currentUser;
+          dispatch(
+            addUser({ uid: uid, email: email, displayName: displayName })
+          );
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -45,8 +60,9 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
-          window.location.href = '/browse'
+          const { uid, email, displayName } = user;
+          dispatch(addUser({ uid, email, displayName }));
+          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;

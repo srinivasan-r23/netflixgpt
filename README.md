@@ -11,6 +11,10 @@
 - Firebase setup
 - Deploying app to production
 - Create Signup user account
+- Login User
+- Redux - Create store using configureStore, passing reducers then create user slice using createUserSlice, define the name, initialState, reducers, then import the reducer to configureStore.
+- Dispatch the data to store.
+- Implemented Signout
 
 
 
