@@ -8,6 +8,9 @@
 - Routing
 - Form validation
 - useRef
+- Firebase setup
+- Deploying app to production
+- Create Signup user account
 
 
 
