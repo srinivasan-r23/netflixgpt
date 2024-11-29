@@ -2,6 +2,9 @@
 
 - Create React App
 - Configure Tailwindcss
+- Header
+- Login Form
+- Sign up Form
 
 
 
