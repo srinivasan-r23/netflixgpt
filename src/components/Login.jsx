@@ -1,11 +1,28 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Header from "./Header";
+import { checkValidData } from "../utils/validate";
 
 const Login = () => {
   const [isSigninForm, setIsSignInForm] = useState(true);
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+  const fullNameRef = useRef(null);
+
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const toggleSignInForm = () => {
     setIsSignInForm(!isSigninForm);
+  };
+  const handleButtonClick = () => {
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    const fullName = fullNameRef?.current?.value;
+    const errorMsg = checkValidData(
+      email,
+      password,
+      isSigninForm ? "null" : fullName
+    );
+    setErrorMsg(errorMsg);
   };
 
   return (
@@ -21,21 +38,30 @@ const Login = () => {
             {isSigninForm ? "Sign In" : "Sign Up"}
           </h1>
           <input
+            ref={emailRef}
             type="text"
             placeholder="Email or mobile number"
             className="mt-4 p-2 outline-none rounded bg-transparent text-white border"
           />
-          {!isSigninForm && <input
-            type="text"
-            placeholder="Full name"
-            className="mt-4 p-2 outline-none rounded bg-transparent text-white border"
-          />}
+          {!isSigninForm && (
+            <input
+              ref={fullNameRef}
+              type="text"
+              placeholder="Full name"
+              className="mt-4 p-2 outline-none rounded bg-transparent text-white border"
+            />
+          )}
           <input
+            ref={passwordRef}
             type="password"
             placeholder="Password"
             className="mt-4 p-2 outline-none rounded bg-transparent text-white border"
           />
-          <button className="p-2 mt-4 bg-red-600 text-white rounded">
+          {errorMsg && <p className="text-red-600 pt-2">*{errorMsg}</p>}
+          <button
+            onClick={handleButtonClick}
+            className="p-2 mt-4 bg-red-600 text-white rounded"
+          >
             {isSigninForm ? "Sign in" : "Sign up"}
           </button>
 
@@ -46,10 +72,11 @@ const Login = () => {
             </label>
           </div>
           <a onClick={toggleSignInForm} className="text-white pt-4">
-            
-              <span className="text-gray-400">{isSigninForm ? `New to Netlifx? ` : 'Already a member? '}</span>{isSigninForm ? 'Sign up now' : 'Sign in'}
-          
-              </a>
+            <span className="text-gray-400">
+              {isSigninForm ? `New to Netlifx? ` : "Already a member? "}
+            </span>
+            {isSigninForm ? "Sign up now" : "Sign in"}
+          </a>
         </div>
       </div>
     </div>
