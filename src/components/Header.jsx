@@ -7,7 +7,7 @@ import { addUser, removeUser } from "../utils/userSlice";
 import { NETFLIX_LOGO } from "../utils/constants";
 
 function Header() {
-  const user = useSelector((store) => store);
+  const user = useSelector((store) => store?.userReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -35,11 +35,8 @@ function Header() {
   };
 
   return (
-    <div className="flex justify-between items-center px-10 pt-5">
-      <img
-        className="object-contain w-44"
-        src={NETFLIX_LOGO}
-      />
+    <div className={`flex justify-between items-center px-10 pt-5 ${user?.uid && ' bg-black'}`}>
+      <img className="object-contain w-44" src={NETFLIX_LOGO} />
       {!user?.uid ? (
         <button
           onClick={routeToSignin}

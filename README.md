@@ -16,6 +16,15 @@
 - Dispatch the data to store.
 - Implemented Signout
 - Unsubscribe onAuth calllback when component unmounts.
+- Register TMDB
+- Using the REST TMDB API's
+- Custom Hooks for fetch trailer and movies.
+- Now Playing Movies
+- Create Movie Slice and Trailer
+- Main and Secondary Container
+- Fetch Data for Trailer Video
+- Embed the YT video
+
 
 
 
