@@ -1,27 +1,44 @@
-import { signOut } from "firebase/auth";
-import React from "react";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import React, { useEffect } from "react";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser, removeUser } from "../utils/userSlice";
+import { NETFLIX_LOGO } from "../utils/constants";
 
 function Header() {
-  const user = useSelector(store => store);
+  const user = useSelector((store) => store);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, email, displayName } = user;
+        dispatch(addUser({ uid, email, displayName }));
+        navigate("/browse");
+      } else {
+        dispatch(removeUser());
+        navigate("/login");
+      }
+    });
+    return () => unsubscribe();
+    // this will be called when component unmounts.
+  }, [dispatch]);
+
   const routeToSignin = () => {
     navigate("/login");
   };
+
   const signOutHandler = () => {
-    signOut(auth).then(() => {
-      navigate('/login')
-    }).catch((error) => {
-      // An error happened.
-    });
-  }
+    signOut(auth);
+  };
+
   return (
     <div className="flex justify-between items-center px-10 pt-5">
       <img
         className="object-contain w-44"
-        src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
+        src={NETFLIX_LOGO}
       />
       {!user?.uid ? (
         <button

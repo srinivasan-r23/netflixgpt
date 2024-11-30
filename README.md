@@ -15,6 +15,7 @@
 - Redux - Create store using configureStore, passing reducers then create user slice using createUserSlice, define the name, initialState, reducers, then import the reducer to configureStore.
 - Dispatch the data to store.
 - Implemented Signout
+- Unsubscribe onAuth calllback when component unmounts.
 
 
 

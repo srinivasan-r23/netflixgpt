@@ -7,7 +7,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 
 const Login = () => {
@@ -62,7 +62,6 @@ const Login = () => {
           const user = userCredential.user;
           const { uid, email, displayName } = user;
           dispatch(addUser({ uid, email, displayName }));
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
