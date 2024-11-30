@@ -24,6 +24,8 @@
 - Main and Secondary Container
 - Fetch Data for Trailer Video
 - Embed the YT video
+- Build Secondary Component
+
 
 
 
