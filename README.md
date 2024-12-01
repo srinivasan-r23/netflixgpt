@@ -25,22 +25,21 @@
 - Fetch Data for Trailer Video
 - Embed the YT video
 - Build Secondary Component
-
-
-
-
+- GPT Search
+- Lamguage Change in GPT Search Page
 
 # Features
+
 - Login and Signup
-    - Signin / Signup Form
-    - Redirect to Browse Page
+  - Signin / Signup Form
+  - Redirect to Browse Page
 - Browse
-    - Header
-    - Main Route
-        - Trailer in Background
-        - Title & Description
-        - Movie Suggestion
-            - Movies List
-- Netflix GPT
-    - Search For
+  - Header
+  - Main Route
+    - Trailer in Background
+    - Title & Description
     - Movie Suggestion
+      - Movies List
+- Netflix GPT
+  - Search For
+  - Movie Suggestion

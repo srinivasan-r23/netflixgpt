@@ -10,7 +10,11 @@ const MovieList = (props) => {
       <div className="flex overflow-x-scroll">
         <div className="flex">
           {movies?.map((movie) => (
-            <MovieCard movies={movies} posterPath={movie?.poster_path} />
+            <MovieCard
+              key={movie?.poster_path}
+              movies={movies}
+              posterPath={movie?.poster_path}
+            />
           ))}
         </div>
       </div>

@@ -9,6 +9,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { BANNER_URL } from "../utils/constants";
 
 const Login = () => {
   const [isSigninForm, setIsSignInForm] = useState(true);
@@ -76,7 +77,7 @@ const Login = () => {
       <Header />
       <img
         className="w-full h-screen absolute top-0 -z-10"
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/2bcf01ee-7ef6-4930-b0d5-c6863853c461/web/IN-en-20241125-TRIFECTA-perspective_a47db038-756f-4f26-b1f7-cfc882b98746_large.jpg"
+        src={BANNER_URL}
       />
       <div className="flex justify-center h-full items-center">
         <div className="rounded-lg bg-opacity-80 bg-black flex flex-col md:w-1/4 sm:w-2/3 p-9">
