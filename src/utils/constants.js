@@ -14,3 +14,4 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "tn", name: "Tamil" },
   { identifier: "spanish", name: "Spanish" },
 ];
+export const OPENAI_KEY = `sk-proj-`; // TODO

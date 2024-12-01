@@ -27,6 +27,7 @@
 - Build Secondary Component
 - GPT Search
 - Lamguage Change in GPT Search Page
+- Search Result Implementation
 
 # Features
 
